@@ -1,15 +1,15 @@
 ---
 name: uiautomator-android-cli
-description: 通过 uiautomator_android_cli.py 连接 Android 设备并执行原子操作（click、swipe、app-start、screenshot 等）。适用于 Android UI 自动化、uiautomator2、atx-agent 场景。
+description: Connect to Android device and run low-level actions (click, swipe, app-start, screenshot, etc.) via uiautomator_android_cli.py. For Android UI automation, uiautomator2, and atx-agent.
 ---
 
-# uiautomator_android_cli 用法
+# uiautomator_android_cli usage
 
-本层对应 **UIAutomatorAndroid**，负责连接设备与基础原子操作。依赖见 `requirements.txt`。
+This layer corresponds to **UIAutomatorAndroid**, handling device connection and basic actions. See `requirements.txt` for dependencies.
 
-## 运行方式
+## How to run
 
-在 `uiautomator_android` 目录下，或已将本目录与依赖加入 Python 路径时：
+From the `uiautomator_android` directory, or with this directory and its dependencies on the Python path:
 
 ```bash
 python uiautomator_android_cli.py --help
@@ -17,37 +17,37 @@ python uiautomator_android_cli.py --device 192.168.1.100:5555 click --text "登�
 python uiautomator_android_cli.py app-start com.xunmeng.pinduoduo
 python uiautomator_android_cli.py swipe 500 1000 500 300 --duration 0.3
 python uiautomator_android_cli.py screenshot --output screen.png
-python uiautomator_android_cli.py dump   # 若支持
+python uiautomator_android_cli.py dump   # if supported
 ```
 
-也可直接使用同目录下的 `uiautomator2_agent.py`（与 `uiautomator_android_cli.py` 同一实现）。
+You can also use `uiautomator2_agent.py` in the same directory (same implementation as the CLI).
 
-## 常用子命令
+## Common subcommands
 
-| 子命令 | 说明 |
-|--------|------|
-| `click` | 点击（--text / --resource-id / --x --y） |
-| `wait` | 等待元素（--timeout） |
-| `set-text` | 在输入框设文本 |
-| `send-keys` | 当前焦点输入 |
-| `swipe` | 滑动 fx fy tx ty |
-| `drag` | 拖拽 |
-| `press` | 按键 back/home/menu 等 |
-| `app-start` | 启动应用（package [--stop] [--activity]） |
-| `app-stop` | 停止应用 |
-| `app-current` | 当前前台应用 |
-| `app-wait` | 等待应用启动 |
-| `screenshot` | 截图（--output path） |
+| Subcommand | Description |
+|------------|-------------|
+| `click` | Click (--text / --resource-id / --x --y) |
+| `wait` | Wait for element (--timeout) |
+| `set-text` | Set text in input |
+| `send-keys` | Type at current focus |
+| `swipe` | Swipe fx fy tx ty |
+| `drag` | Drag |
+| `press` | Key press (back/home/menu, etc.) |
+| `app-start` | Start app (package [--stop] [--activity]) |
+| `app-stop` | Stop app |
+| `app-current` | Current foreground app |
+| `app-wait` | Wait for app to start |
+| `screenshot` | Screenshot (--output path) |
 | `shell` | adb shell |
-| `window-size` | 屏幕宽高 |
-| `unlock` | 解锁 |
-| `pull` / `push` | 文件拉取/推送 |
+| `window-size` | Screen width/height |
+| `unlock` | Unlock |
+| `pull` / `push` | Pull/push files |
 
-## 全局参数
+## Global options
 
-- `--device`, `-d`：设备序列号或 `IP:port`，省略则连接当前唯一 USB 设备。
-- `--json`：输出 JSON。
+- `--device`, `-d`: Device serial or `IP:port`; omit to use the only USB device.
+- `--json`: Output JSON.
 
-## 依赖
+## Dependencies
 
-见 `requirements.txt`（如 `uiautomator2`）。设备需已运行 atx-agent（通常 `python -m uiautomator2 init` 一次即可）。
+See `requirements.txt` (e.g. `uiautomator2`). Device must have atx-agent (usually `python -m uiautomator2 init` once).
