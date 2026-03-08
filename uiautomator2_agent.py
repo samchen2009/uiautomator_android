@@ -266,6 +266,9 @@ def main():
     p_press.add_argument("key", nargs="?", default="back")
     p_press.set_defaults(run=cmd_press)
 
+    # back：等同于 press back，方便无实体 Back 键时用 CLI 模拟
+    sub.add_parser("back", help="按 Back 键（等同于 press back）").set_defaults(run=cmd_press, key="back")
+
     # app_start
     p_start = sub.add_parser("app-start", help="启动应用")
     p_start.add_argument("package", help="包名")
