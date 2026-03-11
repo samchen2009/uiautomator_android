@@ -346,7 +346,7 @@ class UIAutomatorAndroid:
             fmt = format or "xml"
             if mode == "current":
                 xml = d.dump_hierarchy()
-                self._last_result = _ok({"xml": xml, "format": fmt, "mode": "current"})
+                self._last_result = _ok({"xml": xml, "xml_list": [xml], "format": fmt, "mode": "current"})
                 return self
             # several / all：需要滑动并多次 dump
             try:
